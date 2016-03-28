@@ -1,5 +1,6 @@
 package org.remarastudios.nightmetro.views.Stations;
 
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -12,6 +13,8 @@ import android.widget.ListView;
 
 import org.remarastudios.nightmetro.R;
 import org.remarastudios.nightmetro.presenters.StationsPresenter;
+import org.remarastudios.nightmetro.views.Timetable.TimetableActivity;
+import org.remarastudios.nightmetro.views.Timetable.TimetableActivityFragment;
 
 import java.util.ArrayList;
 
@@ -83,6 +86,8 @@ public class StationsActivityFragment extends Fragment implements StationsView, 
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
+        Intent intent = new Intent(getActivity(), TimetableActivity.class)
+                .putExtra(Intent.EXTRA_TEXT, position);
+        startActivity(intent);
     }
 }

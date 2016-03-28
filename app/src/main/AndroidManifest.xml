@@ -20,8 +20,7 @@
         <activity
             android:name=".views.Timetable.TimetableActivity"
             android:label="@string/title_activity_timetable"
-            android:parentActivityName=".views.Stations.StationsActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:parentActivityName=".views.Stations.StationsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".views.Stations.StationsActivity" />

@@ -13,7 +13,8 @@ public class StationsInteractor {
             "Principe Pio",
             "Tribunal",
             "Quevedo",
-            "Noviciado"
+            "Noviciado",
+            "Plaza España"
         };
         ArrayList<String> stations = new ArrayList<String>(
                 Arrays.asList(stationsArray)

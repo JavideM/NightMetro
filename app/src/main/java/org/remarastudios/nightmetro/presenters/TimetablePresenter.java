@@ -10,7 +10,7 @@ public class TimetablePresenter {
     TimetableView mView;
     TimetableInteractor mInteractor;
 
-    public TimetablePresenter (TimetableView view){
+    public TimetablePresenter (TimetableView view, int itemId){
         this.mView = view;
         this.mInteractor = new TimetableInteractor();
     }
