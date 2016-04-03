@@ -1,5 +1,7 @@
 package org.remarastudios.nightmetro.views.Stations;
 
+import org.remarastudios.nightmetro.entities.StationEntity;
+
 import java.util.ArrayList;
 
 /**
@@ -11,5 +13,5 @@ public interface StationsView {
 
     void setupAdapter();
 
-    void setItems (ArrayList<String> stations);
+    void setItems (ArrayList<StationEntity> stations);
 }

@@ -34,6 +34,7 @@ public class TimetableActivityFragment extends Fragment implements TimetableView
         if(intent != null && intent.hasExtra(Intent.EXTRA_TEXT))
             id = intent.getIntExtra(Intent.EXTRA_TEXT, 0);
         mPresenter = new TimetablePresenter(this, id);
+        //Toast.makeText(this.getActivity(),id + "", Toast.LENGTH_LONG).show();
     }
 
     @Override

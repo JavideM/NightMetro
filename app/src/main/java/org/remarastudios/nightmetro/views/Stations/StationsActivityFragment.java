@@ -12,6 +12,8 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import org.remarastudios.nightmetro.R;
+import org.remarastudios.nightmetro.adapters.StationsAdapter;
+import org.remarastudios.nightmetro.entities.StationEntity;
 import org.remarastudios.nightmetro.presenters.StationsPresenter;
 import org.remarastudios.nightmetro.views.Timetable.TimetableActivity;
 import org.remarastudios.nightmetro.views.Timetable.TimetableActivityFragment;
@@ -25,7 +27,7 @@ public class StationsActivityFragment extends Fragment implements StationsView, 
     public static final String LOG_TAG = StationsActivityFragment.class.getSimpleName();
 
     StationsPresenter mPresenter;
-    ArrayAdapter<String> mStationAdapter;
+    StationsAdapter mStationAdapter;
 
     private ListView stationsListView;
 
@@ -45,15 +47,13 @@ public class StationsActivityFragment extends Fragment implements StationsView, 
         mPresenter = new StationsPresenter(this);
 
         // Initialized the stations adapter
-        mStationAdapter = new ArrayAdapter<String>(
+        mStationAdapter = new StationsAdapter(
                 // Current context
                 getActivity(),
                 // Layout list id
                 R.layout.list_item_station,
-                // Item id
-                R.id.list_item_station_textview,
                 // Empty data list
-                new ArrayList<String>());
+                new ArrayList<StationEntity>());
         stationsListView = (ListView)view.findViewById(R.id.listview_stations);
     }
 
@@ -77,9 +77,9 @@ public class StationsActivityFragment extends Fragment implements StationsView, 
         stationsListView.setOnItemClickListener(this);
     }
 
-    public void setItems (ArrayList<String> stations){
+    public void setItems (ArrayList<StationEntity> stations){
         mStationAdapter.clear();
-        for (String station: stations) {
+        for (StationEntity station: stations) {
           mStationAdapter.add(station);
         };
     }
