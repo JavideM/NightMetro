@@ -16,7 +16,9 @@ public class TimetablePresenter {
     }
 
     public void onStart() {
-
+        mView.setupList();
+        mView.setupAdapter();
+        mView.setItems(mInteractor.getTimes());
     }
 
     public void onStop(){

@@ -6,10 +6,14 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+import android.widget.ListView;
 
 import org.remarastudios.nightmetro.R;
+import org.remarastudios.nightmetro.adapters.TimesAdapter;
+import org.remarastudios.nightmetro.entities.TimeEntity;
 import org.remarastudios.nightmetro.presenters.TimetablePresenter;
+
+import java.util.ArrayList;
 
 /**
  * A placeholder fragment containing a simple view.
@@ -17,6 +21,9 @@ import org.remarastudios.nightmetro.presenters.TimetablePresenter;
 public class TimetableActivityFragment extends Fragment implements TimetableView {
 
     TimetablePresenter mPresenter;
+    TimesAdapter mTimeAdapter;
+
+    private ListView timesListView;
 
     public TimetableActivityFragment() {
     }
@@ -35,6 +42,15 @@ public class TimetableActivityFragment extends Fragment implements TimetableView
             id = intent.getIntExtra(Intent.EXTRA_TEXT, 0);
         mPresenter = new TimetablePresenter(this, id);
         //Toast.makeText(this.getActivity(),id + "", Toast.LENGTH_LONG).show();
+        // Initialized the stations adapter
+        mTimeAdapter = new TimesAdapter(
+                // Current context
+                getActivity(),
+                // Layout list id
+                R.layout.list_item_station,
+                // Empty data list
+                new ArrayList<TimeEntity>());
+        timesListView = (ListView)view.findViewById(R.id.listview_timetable);
     }
 
     @Override
@@ -47,5 +63,23 @@ public class TimetableActivityFragment extends Fragment implements TimetableView
     public void onStop() {
         super.onStop();
         mPresenter.onStop();
+    }
+
+    @Override
+    public void setupList() {
+        timesListView.setAdapter(mTimeAdapter);
+    }
+
+    @Override
+    public void setupAdapter() {
+
+    }
+
+    @Override
+    public void setItems(ArrayList<TimeEntity> times) {
+        mTimeAdapter.clear();
+        for (TimeEntity time: times) {
+            mTimeAdapter.add(time);
+        };
     }
 }
