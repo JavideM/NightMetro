@@ -1,5 +1,7 @@
 package org.remarastudios.nightmetro.views.Stations;
 
+import android.content.Context;
+
 import org.remarastudios.nightmetro.entities.StationEntity;
 
 import java.util.ArrayList;
@@ -14,4 +16,6 @@ public interface StationsView {
     void setupAdapter();
 
     void setItems (ArrayList<StationEntity> stations);
+
+    Context getViewContext();
 }

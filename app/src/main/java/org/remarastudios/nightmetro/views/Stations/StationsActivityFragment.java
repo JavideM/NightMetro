@@ -1,5 +1,6 @@
 package org.remarastudios.nightmetro.views.Stations;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -82,6 +83,11 @@ public class StationsActivityFragment extends Fragment implements StationsView, 
         for (StationEntity station: stations) {
           mStationAdapter.add(station);
         };
+    }
+
+    @Override
+    public Context getViewContext() {
+        return this.getActivity();
     }
 
     @Override

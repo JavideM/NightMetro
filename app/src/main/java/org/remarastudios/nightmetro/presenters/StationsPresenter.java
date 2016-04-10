@@ -12,7 +12,7 @@ public class StationsPresenter {
 
     public StationsPresenter (StationsView view){
         this.mView = view;
-        this.mInteractor = new StationsInteractor();
+        this.mInteractor = new StationsInteractor(mView.getViewContext());
     }
 
     public void onStart() {
